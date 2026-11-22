@@ -1,9 +1,11 @@
 fetch("MagicInMe.txt")
   .then(response => response.text())
   .then(text => {
-    const lines = text.split(/\r?\n/);
+    const effects = text.split(/\n/);
 
-    console.log(lines[0]);
+    console.log(effects[0]);
+    //should be the last of v1
+    console.log(effects[9999]);
   })
   .catch(error => {
     console.error("Error reading file:", error);
