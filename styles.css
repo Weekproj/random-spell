@@ -16,5 +16,6 @@ fieldset {
 
 #control-panel {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+	gap: 40px;
 }
