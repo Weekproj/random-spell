@@ -56,7 +56,7 @@ fetch("MagicInMe.txt")
     sillyOutput(1);
   });
 
-function sillyOutput(int val = 0) {
+function sillyOutput(val = 0) {
   switch(val) {
     case 0:
       alert("I can't give you less than one effect!");
