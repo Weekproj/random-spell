@@ -6,14 +6,10 @@ const LC = urlParams.get('list-choice');
 
 if (quantity != null) {
   document.getElementById('quantity').value = quantity;
-} else {
-  return;
 }
 
 if (LC != null) {
   document.querySelector(`input[name="list-choice"][value="${LC}"]`).checked = true;
-} else {
-  return;
 }
 
 fetch("MagicInMe.txt")
