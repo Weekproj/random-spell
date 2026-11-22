@@ -48,7 +48,7 @@ fetch("MagicInMe.txt")
 
       output.removeChild(p);
 
-      output.appendChild(magicOutput.forEach(printOutput));
+      magicOutput.forEach(printOutput);
     }
   })
   .catch(error => {
@@ -79,8 +79,9 @@ function getRandomEffs(list, count) {
 }
 
 function printOutput(magicEffect) {
+  const finalOutput = document.getElementById("output");
   const effect = document.createElement('p');
   effect.id = 'magicOutput';
   effect.textContent = magicEffect;
-  return effect;
+  finalOutput.appendChild(effect);
 }
