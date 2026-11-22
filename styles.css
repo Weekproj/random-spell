@@ -2,6 +2,10 @@ h1 {
 	text-align: center;
 }
 
+fieldset {
+	border: 0px;
+}
+
 #desc {
   color: gray;
 }
