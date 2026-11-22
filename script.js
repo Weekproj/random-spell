@@ -18,11 +18,69 @@ fetch("MagicInMe.txt")
     const effects = text.split(/\n/);
     const oldEff = effects.slice(0,10000);
     const newEff = effects.slice(10000);
-    
-    console.log(effects[9999]);
-    console.log(oldEff);
-    console.log(newEff);
+
+    if (quantity == null || LC == null) {
+      //nothing
+    } else if (quantity <= 0) {
+      sillyOutput();
+    } else if (LC != "old" && LC != "new" && LC != "both") {
+      sillyOutput(2);
+    } else {
+      const output = document.getElementById("output");
+      const p = document.createElement('p');
+      p.id = 'magicOutput';
+      p.textContent = 'Getting your random effects...';
+      output.appendChild(p);
+
+      let magiclist;
+
+      if (LC == "old") {
+        magiclist = oldEff;
+      }
+      if (LC == "new") {
+        magiclist = newEff;
+      }
+      if (LC == "both") {
+        magiclist = effects;
+      }
+
+      let magicOutput = getRandomEffs(magiclist, quantity);
+
+      output.removeChild(p);
+
+      output.appendChild(magicOutput.forEach(printOutput));
+    }
   })
   .catch(error => {
-    console.error("Error reading file:", error);
+    console.error("Error:", error);
+    sillyOutput(1);
   });
+
+function sillyOutput(int val = 0) {
+  switch(val) {
+    case 0:
+      alert("I can't give you less than one effect!");
+      break;
+    case 1:
+      alert("Uh-oh, something is broken!");
+      break;
+    case 2:
+      alert("That's not an option!");
+      break;
+    default:
+      alert("Don't be silly, that's an invalid input!");
+  }
+}
+
+function getRandomEffs(list, count) {
+  return Array.from({ length: count}, () =>
+    list[Math.floor(Math.random() * list.length)]
+  );
+}
+
+function printOutput(magicEffect) {
+  const effect = document.createElement('p');
+  effect.id = 'magicOutput';
+  effect.textContent = magicEffect;
+  return effect;
+}
